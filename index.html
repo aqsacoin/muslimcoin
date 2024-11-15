@@ -13,9 +13,12 @@
     <p>مرحبًا بك في MuslimCoin، العملة الرقمية المستقلة.</p>
 
     <!-- بيانات المستخدم -->
-    <div class="user-info">
+    <div class="profile-data">
       <img src="https://via.placeholder.com/100" alt="User Profile" class="profile-pic">
-      <p class="username">اسم المستخدم</p>
+      <div class="user-details">
+        <p class="username">اسم المستخدم</p>
+        <p class="balance">رصيدك: <span>0.00</span> MuslimCoins</p>
+      </div>
     </div>
 
     <!-- قائمة الصفحات -->
@@ -31,7 +34,15 @@
     <div class="logout">
       <a href="#" class="btn logout-btn">تسجيل الخروج</a>
     </div>
+
+    <!-- مؤقت تنازلي في صفحة التعدين -->
+    <div class="countdown">
+      <p>الوقت المتبقي للتعدين: <span id="timer">00:00:00</span></p>
+    </div>
+
   </div>
+
+  <script src="pages/script.js"></script>
 
 </body>
 </html>
