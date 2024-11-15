@@ -89,8 +89,8 @@ document.addEventListener("DOMContentLoaded", function() {
     loginForm.addEventListener('submit', function(event) {
       event.preventDefault();
       
-      const username = document.querySelector('#username').value;
-      const password = document.querySelector('#password').value;
+      const username = document.querySelector('#login-email').value;
+      const password = document.querySelector('#login-password').value;
 
       // في هذا المثال، يمكن التحقق من اسم المستخدم وكلمة المرور (أو الاتصال بنظام تحقق حقيقي)
       if (username && password) {
