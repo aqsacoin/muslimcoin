@@ -31,7 +31,7 @@
 
             if (email === storedEmail && password === storedPassword) {
                 localStorage.setItem('loggedIn', true);
-                window.location.href = 'index.html';
+                window.location.href = '/index.html';  // تعديل المسار إلى الجذر
             } else {
                 alert('بيانات غير صحيحة. يرجى المحاولة مجددًا.');
             }
