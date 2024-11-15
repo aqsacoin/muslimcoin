@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محفظة مسلم كوين</title>
+  <link rel="stylesheet" href="../style.css">  <!-- ربط مع ملف style.css -->
+</head>
+<body>
+  <div class="container">
+    <h1>محفظة مسلم كوين</h1>
+
+    <!-- عرض العنوان الفريد -->
+    <div class="wallet-info">
+      <p><strong>عنوان المحفظة:</strong> <span id="address">MSC12345abcdefg</span></p>
+      <p><strong>رصيد المحفظة:</strong> <span id="balance">0</span> عملة</p>
+    </div>
+
+    <!-- عرض كلمات الاسترداد -->
+    <div class="recovery-phrase">
+      <h2>كلمات الاسترداد</h2>
+      <p id="recovery-phrase">loading...</p>
+    </div>
+
+    <!-- تحويل الأموال -->
+    <div class="transfer-section">
+      <h2>تحويل الأموال</h2>
+      <form id="transfer-form">
+        <label for="receiver-address">عنوان المستقبل:</label>
+        <input type="text" id="receiver-address" required>
+
+        <label for="amount">المبلغ:</label>
+        <input type="number" id="amount" required>
+
+        <button type="submit">إرسال</button>
+      </form>
+      <p id="transfer-status"></p>
+    </div>
+
+    <!-- مكافأة المهام اليومية -->
+    <div class="daily-reward">
+      <button id="daily-reward-btn">استلام مكافأة يومية</button>
+      <p id="reward-status"></p>
+    </div>
+  </div>
+
+  <script src="wallet.js"></script> <!-- ربط مع ملف الجافا سكربت -->
+</body>
+</html>
