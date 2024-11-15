@@ -1,178 +1,145 @@
-/* إعدادات عامة */
-body {
-  font-family: 'Amiri', serif; /* تطبيق الخط Amiri على كافة النصوص */
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9BkN6Ce_uaJzHzMe-YYPOvf9SkIKMUmbTGagUZDqHLDyuEh5Z7EXv3FPE&s=10');
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  background-color: rgba(0, 0, 0, 0); /* جعل الخلفية أكثر شفافية */
-  background-blend-mode: overlay;
+/* تطبيق الخط Amiri */
+* {
+  font-family: 'Amiri', serif;
   margin: 0;
   padding: 0;
-  text-align: center;
-  overflow-x: hidden;
 }
 
-/* إضافة طبقة سواداء شفافة فوق الصفحة */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* طبقة سوداء لامعة شفافة */
-  z-index: -1; /* وضع الطبقة تحت المحتوى */
-}
-
-/* تنسيق الحاوية الرئيسية */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 15px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* عنوان الصفحة */
-h1 {
-  color: #FFD700;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #FFD700;
-  padding-bottom: 10px;
-}
-
-/* تنسيق الأزرار */
-button {
-  font-family: 'Amiri', serif; /* تطبيق الخط Amiri على الأزرار */
-  color: #fff;
-  background-color: #FFD700;
-  border: none;
-  padding: 10px 20px; /* تقليل الحجم قليلاً */
-  margin: 10px;
-  font-size: 1.1em; /* حجم خط الأزرار أصغر */
-  cursor: pointer;
-  border-radius: 50%; /* جعل الأزرار دائرية */
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #e6b800; /* لون الذهب الداكن */
-}
-
-/* تنسيق الحقول والنماذج */
-input[type="text"], input[type="password"], input[type="email"], input[type="number"] {
-  width: 80%;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
-  border: 1px solid #FFD700;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #FFD700;
-  font-family: 'Amiri', serif;
-}
-
-/* حقل ارسال البيانات */
-input[type="submit"] {
-  background-color: #FFD700;
-  color: #fff;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 50%;
-  font-family: 'Amiri', serif;
-  font-size: 1.1em;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #e6b800;
-}
-
-/* تنسيق بيانات المستخدم */
-.profile-data {
-  margin-top: 20px;
+body {
+  background: url('https://via.placeholder.com/1920x1080') no-repeat center center fixed; /* رابط الصورة الذي طلبته */
+  background-size: cover;
+  color: #f4f4f4;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.profile-data img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 2px solid #FFD700;
-  margin-right: 20px;
+/* الطبقة السوداء الشفافة اللامعة */
+.container {
+  background: rgba(0, 0, 0, 0.6); /* الطبقة الشفافة */
+  border-radius: 10px;
+  padding: 40px;
+  width: 80%;
+  max-width: 1200px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.profile-data .name {
-  font-size: 1.5em;
-  color: #FFD700;
-  font-family: 'Amiri', serif;
+header {
+  background-color: #2d6a4f;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-.profile-data .balance {
-  font-size: 1.2em;
-  color: #FFD700;
-  font-family: 'Amiri', serif;
+h1 {
+  font-size: 40px;
+  color: white;
+  margin-bottom: 10px;
 }
 
-/* تنسيق صفحة التعدين */
-.mining-info {
+p {
+  font-size: 18px;
+  color: #f4f4f4;
+}
+
+.profile-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
-  font-size: 1.2em;
-  color: #FFD700;
-  font-family: 'Amiri', serif;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.mining-info span {
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 2px solid #2d6a4f;
+}
+
+.user-details .username {
+  font-size: 22px;
+  color: #2d6a4f;
   font-weight: bold;
 }
 
-/* مؤقت تنازلي */
+.user-details .balance {
+  font-size: 18px;
+  color: #5f6368;
+}
+
+.navigation {
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #2d6a4f;
+  color: white;
+  padding: 10px 25px;
+  margin: 10px;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #1a4d31;
+}
+
+.logout-btn {
+  background-color: #e63946;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
 .countdown {
-  font-size: 2em;
-  color: #FFD700;
-  font-family: 'Amiri', serif;
+  margin-top: 30px;
+  font-size: 20px;
+  color: #f4f4f4;
+}
+
+.navigation a {
+  display: inline-block;
+  margin: 10px;
+}
+
+/* تحسين الأزرار لجعلها أصغر وأكثر جاذبية */
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+}
+
+/* تخصيص الصفحات */
+.logout-btn {
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+.logout {
   margin-top: 20px;
 }
 
-/* إعدادات إضافية لتحسين توافق الجوال */
-@media (max-width: 768px) {
-  .container {
-    width: 90%;
-    padding: 10px;
-  }
+/* التنسيق الخاص بالطبقة الشفافة */
+.container {
+  background: rgba(0, 0, 0, 0.7); /* الطبقة السوداء الشفافة */
+  padding: 40px;
+  width: 80%;
+  max-width: 1200px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-  h1 {
-    font-size: 1.8em;
-  }
-
-  button {
-    width: 100%;
-    padding: 12px;
-  }
-
-  .profile-data img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .profile-data .name {
-    font-size: 1.2em;
-  }
-
-  .profile-data .balance {
-    font-size: 1em;
-  }
-
-  .mining-info {
-    font-size: 1em;
-  }
-
-  .countdown {
-    font-size: 1.5em;
-  }
+h1, p, .btn, .logout-btn {
+  color: #fff; /* تأكيد أن النص والأزرار جميعها تظهر باللون الأبيض على الطبقة الشفافة */
 }
