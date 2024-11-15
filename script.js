@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  
+
   // تحقق من حالة تسجيل الدخول
   const isLoggedIn = localStorage.getItem('loggedIn');
   
@@ -119,32 +119,51 @@ document.addEventListener("DOMContentLoaded", function() {
     loginForm.addEventListener('submit', function(event) {
       event.preventDefault();
       
-      const username = document.querySelector('#login-email').value;
+      const email = document.querySelector('#login-email').value;
       const password = document.querySelector('#login-password').value;
 
-      // في هذا المثال، يمكن التحقق من اسم المستخدم وكلمة المرور (أو الاتصال بنظام تحقق حقيقي)
-      if (username && password) {
-        // تخزين بيانات المستخدم في localStorage
+      // التحقق من البريد الإلكتروني وكلمة المرور المخزنة
+      const storedEmail = localStorage.getItem('email');
+      const storedPassword = localStorage.getItem('password');
+
+      if (email === storedEmail && password === storedPassword) {
+        // تخزين حالة تسجيل الدخول
         localStorage.setItem('loggedIn', true);
-        localStorage.setItem('username', username);
+        localStorage.setItem('username', storedEmail); // تعيين اسم المستخدم (أو تعديل بناءً على بياناتك)
         localStorage.setItem('balance', '0.00');
         localStorage.setItem('profilePic', 'https://via.placeholder.com/100');  // صورة افتراضية
 
         // إعادة التوجيه بعد تسجيل الدخول
         window.location.href = 'index.html';
       } else {
-        alert('يرجى إدخال اسم المستخدم وكلمة المرور');
+        alert('البريد الإلكتروني أو كلمة المرور غير صحيحة');
       }
     });
   }
 
-  // إضافة وظيفة للتوجيه إلى صفحة التسجيل في حالة رغبة المستخدم في إنشاء حساب جديد
-  const registerLink = document.querySelector('#register-link');
-  if (registerLink) {
-    registerLink.addEventListener('click', function(event) {
+  // إضافة وظيفة لتسجيل حساب جديد في صفحة التسجيل
+  const registerForm = document.querySelector('#register-form');
+  if (registerForm) {
+    registerForm.addEventListener('submit', function(event) {
       event.preventDefault();
-      window.location.href = 'pages/register.html';
+
+      const username = document.querySelector('#username').value;
+      const email = document.querySelector('#email').value;
+      const password = document.querySelector('#password').value;
+
+      // التحقق من وجود بيانات المدخلات
+      if (username && email && password) {
+        // تخزين بيانات المستخدم في localStorage
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
+        localStorage.setItem('username', username);
+        localStorage.setItem('loggedIn', true);  // تخزين حالة تسجيل الدخول
+
+        // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول بعد التسجيل بنجاح
+        window.location.href = 'login.html';
+      } else {
+        alert('يرجى إدخال جميع البيانات بشكل صحيح');
+      }
     });
   }
-
 });
