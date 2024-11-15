@@ -19,6 +19,23 @@
         <p>هل لديك حساب؟ <a href="login.html">تسجيل الدخول</a></p>
     </div>
 
-    <script src="script.js"></script>
+    <!-- كود JavaScript للتسجيل -->
+    <script>
+        document.getElementById("register-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // حفظ بيانات التسجيل في التخزين المحلي
+            localStorage.setItem('registeredUsername', username);
+            localStorage.setItem('registeredEmail', email);
+            localStorage.setItem('registeredPassword', password);
+
+            alert('تم التسجيل بنجاح. يمكنك الآن تسجيل الدخول.');
+            window.location.href = 'login.html';
+        });
+    </script>
 </body>
 </html>
