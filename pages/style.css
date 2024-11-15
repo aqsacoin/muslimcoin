@@ -1,6 +1,6 @@
 /* إعدادات عامة */
 body {
-  font-family: 'Amiri', serif;
+  font-family: 'Amiri', serif; /* تطبيق خط Amiri على كامل الموقع */
   color: #FFD700;
   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9BkN6Ce_uaJzHzMe-YYPOvf9SkIKMUmbTGagUZDqHLDyuEh5Z7EXv3FPE&s=10');
   background-size: cover;
@@ -45,14 +45,34 @@ h1 {
   padding-bottom: 10px;
 }
 
+/* تنسيق بيانات المستخدم */
+.user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.username {
+  font-size: 1.5em;
+  color: #FFD700;
+}
+
 /* تنسيق الأزرار */
 .btn {
   font-family: 'Amiri', serif;
   color: #fff;
   background-color: #FFD700;
   border: none;
-  padding: 15px 25px;
-  margin: 10px;
+  padding: 10px 20px;
+  margin: 8px;
   font-size: 1.2em;
   cursor: pointer;
   border-radius: 5px;
@@ -76,6 +96,16 @@ h1 {
 
 .navigation .btn:hover {
   background-color: #555;
+}
+
+/* زر تسجيل الخروج */
+.logout-btn {
+  background-color: #c0392b;
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background-color: #e74c3c;
 }
 
 /* إعدادات إضافية لتحسين توافق الجوال */
