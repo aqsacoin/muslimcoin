@@ -4,30 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MuslimCoin</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages/style.css">
 </head>
 <body>
   <div class="container">
     <h1>مرحباً بكم في MuslimCoin</h1>
     <p>اكتشف عالم العملات الرقمية</p>
-
-    <!-- أزرار التنقل إلى الصفحات -->
-    <button onclick="location.href='mine.html'">ابدأ التعدين</button>
-    <button onclick="location.href='blockchain.html'">عرض البلوكتشين</button>
-    <button onclick="location.href='isValid.html'">التحقق من صحة السلسلة</button>
-
-    <!-- إضافة زر تغيير اللغة -->
-    <div class="language-selector">
-      <button onclick="changeLanguage('ar')">العربية</button>
-      <button onclick="changeLanguage('en')">English</button>
-    </div>
+    <button onclick="location.href='/pages/mine.html'">ابدأ التعدين</button>
+    <button onclick="location.href='/pages/blockchain.html'">عرض البلوكتشين</button>
+    <button onclick="location.href='/pages/isValid.html'">التحقق من صحة السلسلة</button>
   </div>
-
-  <script>
-    function changeLanguage(language) {
-      // أضف هنا كود لتغيير اللغة، مثل تغيير النصوص عبر الترجمة
-      alert('تغيير اللغة إلى ' + language);
-    }
-  </script>
 </body>
 </html>
