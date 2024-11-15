@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تحقق من الهوية (KYC)</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>التحقق من الهوية (KYC)</h1>
+    <p>يرجى تقديم التفاصيل الشخصية الخاصة بك للتحقق من هويتك. سيتم استخدام هذه البيانات للتحقق من حسابك.</p>
+    
+    <form id="kycForm">
+      <label for="fullName">الاسم الكامل:</label>
+      <input type="text" id="fullName" name="fullName" required>
+
+      <label for="dateOfBirth">تاريخ الميلاد:</label>
+      <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+      <label for="nationalId">رقم الهوية أو جواز السفر:</label>
+      <input type="text" id="nationalId" name="nationalId" required>
+
+      <label for="address">العنوان:</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="photoId">رفع صورة الهوية:</label>
+      <input type="file" id="photoId" name="photoId" accept="image/*" required>
+
+      <label for="selfie">رفع صورة شخصية (سيلفي):</label>
+      <input type="file" id="selfie" name="selfie" accept="image/*" required>
+
+      <button type="submit">إرسال للتحقق</button>
+    </form>
+  </div>
+
+  <script src="../pages/kyc.js"></script>
+</body>
+</html>
