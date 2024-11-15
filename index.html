@@ -8,22 +8,25 @@
 </head>
 <body>
   <div class="container">
-    <p class="welcome-text">مرحباً بكم في</p>
-    <h1>MuslimCoin</h1>
-    
-    <div class="language-buttons">
-      <button onclick="changeLanguage('ar')">عربي</button>
-      <button onclick="changeLanguage('en')">English</button>
-    </div>
+    <h1>مرحباً بكم في MuslimCoin</h1>
+    <p>اكتشف عالم العملات الرقمية</p>
 
+    <!-- أزرار التنقل إلى الصفحات -->
     <button onclick="location.href='mine.html'">ابدأ التعدين</button>
     <button onclick="location.href='blockchain.html'">عرض البلوكتشين</button>
     <button onclick="location.href='isValid.html'">التحقق من صحة السلسلة</button>
+
+    <!-- إضافة زر تغيير اللغة -->
+    <div class="language-selector">
+      <button onclick="changeLanguage('ar')">العربية</button>
+      <button onclick="changeLanguage('en')">English</button>
+    </div>
   </div>
 
   <script>
     function changeLanguage(language) {
-      alert("تم تغيير اللغة إلى " + (language === 'ar' ? 'العربية' : 'English'));
+      // أضف هنا كود لتغيير اللغة، مثل تغيير النصوص عبر الترجمة
+      alert('تغيير اللغة إلى ' + language);
     }
   </script>
 </body>
