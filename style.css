@@ -1,0 +1,81 @@
+/* الإعدادات العامة */
+body {
+  font-family: 'Amiri', serif;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9BkN6Ce_uaJzHzMe-YYPOvf9SkIKMUmbTGagUZDqHLDyuEh5Z7EXv3FPE&s=10'); /* الخلفية */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #FFD700;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* رأس الصفحة */
+header {
+  background-color: rgba(0, 0, 0, 0.6);  /* خلفية داكنة للرأس */
+  padding: 20px;
+}
+
+header .logo img {
+  max-width: 100px;
+  height: auto;
+}
+
+h1 {
+  font-size: 3em;
+  color: #FFD700;
+  margin: 20px 0;
+}
+
+/* قائمة التنقل */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #FFD700;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #2f5d62;
+}
+
+/* المحتوى الرئيسي */
+.main-content {
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.6);  /* خلفية داكنة للمحتوى */
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro p {
+  font-size: 1.5em;
+}
+
+.account-info p {
+  font-size: 1.5em;
+}
+
+/* التعديلات للتصميم في الأجهزة الصغيرة */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  .main-content {
+    width: 90%;
+    padding: 15px;
+  }
+}
