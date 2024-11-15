@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الإعدادات - MuslimCoin</title>
+  <link rel="stylesheet" href="pages/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>الإعدادات</h1>
+
+    <!-- إعدادات الحساب -->
+    <div class="settings">
+      <label for="username">اسم المستخدم:</label>
+      <input type="text" id="username" value="اسم المستخدم الحالي">
+
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" value="البريد الإلكتروني الحالي">
+
+      <label for="password">كلمة المرور:</label>
+      <input type="password" id="password" placeholder="أدخل كلمة المرور">
+
+      <button class="btn">حفظ التغييرات</button>
+    </div>
+
+    <!-- قائمة الصفحات -->
+    <div class="navigation">
+      <a href="index.html" class="btn">الصفحة الرئيسية</a>
+      <a href="pages/blockchain.html" class="btn">بلوك تشين</a>
+      <a href="pages/isValid.html" class="btn">التحقق</a>
+      <a href="pages/mine.html" class="btn">تعدين</a>
+      <a href="pages/wallet.html" class="btn">المحفظة</a>
+      <a href="pages/kyc.html" class="btn">التحقق من الهوية</a>
+    </div>
+
+    <!-- زر تسجيل الخروج -->
+    <div class="logout">
+      <a href="pages/login.html" class="btn logout-btn">تسجيل الخروج</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
