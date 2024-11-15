@@ -37,12 +37,6 @@ body::before {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
-.welcome-text {
-  font-size: 1.5em;
-  color: #FFD700;
-  margin-bottom: 10px;
-}
-
 h1 {
   color: #FFD700;
   font-size: 2.5em;
@@ -53,36 +47,34 @@ h1 {
 
 /* تنسيق الأزرار */
 button {
-  background-color: #FFD700;
-  color: black;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  margin: 10px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
   font-family: 'Amiri', serif;
+  color: #fff;
+  background-color: #FFD700;
+  border: none;
+  padding: 15px 25px;
+  margin: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #e0b200;
+  background-color: #e6b800; /* لون الذهب الداكن */
 }
 
-/* تنسيق أزرار تغيير اللغة */
-.language-buttons button {
-  background-color: rgba(255, 215, 0, 0.8);
-  color: black;
-  padding: 8px 15px;
-  margin: 10px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-family: 'Amiri', serif;
+/* تنسيق أزرار اللغة */
+.language-selector {
+  margin-top: 20px;
 }
 
-.language-buttons button:hover {
-  background-color: rgba(255, 215, 0, 1);
+.language-selector button {
+  background-color: #333;
+  margin: 5px;
+}
+
+.language-selector button:hover {
+  background-color: #555;
 }
 
 /* إعدادات إضافية لتحسين توافق الجوال */
@@ -96,7 +88,8 @@ button:hover {
     font-size: 1.8em;
   }
 
-  .welcome-text {
-    font-size: 1.2em;
+  button {
+    width: 100%;
+    padding: 12px;
   }
 }
