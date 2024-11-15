@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const balanceElement = document.querySelector('.balance span');
   const profilePic = document.querySelector('.profile-pic');
   const timerElement = document.getElementById('timer');
+  const mineButton = document.getElementById('mine-btn'); // زر التعدين
+  let isMining = false; // للتأكد من أن التعدين لا يحدث تلقائيًا
   
   // إذا كان المستخدم مسجلاً، اعرض بياناته
   if (isLoggedIn) {
@@ -48,8 +50,9 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // إعداد مؤقت تنازلي في صفحة التعدين
-  if (timerElement) {
+  if (timerElement && mineButton) {
     let seconds = 3600; // مثال: ساعة واحدة 
+
     const updateTimer = () => {
       let hours = Math.floor(seconds / 3600);
       let minutes = Math.floor((seconds % 3600) / 60);
@@ -58,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // عرض الوقت بشكل مناسب
       timerElement.textContent = `${padZero(hours)}:${padZero(minutes)}:${padZero(remainingSeconds)}`;
 
-      if (seconds > 0) {
+      if (seconds > 0 && isMining) {
         seconds--;
       }
     };
@@ -68,6 +71,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     setInterval(updateTimer, 1000);
     updateTimer(); // تحديث الوقت عند التحميل
+
+    // عند الضغط على زر التعدين
+    mineButton.addEventListener('click', function() {
+      if (!isMining) {
+        isMining = true; // بدء التعدين
+        seconds = 3600;  // إعادة تعيين المؤقت إلى ساعة جديدة
+      } else {
+        alert('التعدين جاري بالفعل');
+      }
+    });
   }
 
   // إضافة وظيفة للتنقل بين الصفحات (إذا كانت هناك صفحات أخرى تتطلب تفاعلاً)
