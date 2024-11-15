@@ -1,3 +1,4 @@
+<!-- صفحة التعدين mine.html -->
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -7,16 +8,47 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <div class="container">
-    <h1>ابدأ التعدين</h1>
-    <p>اضغط على الزر لبدء عملية التعدين على بلوكتشين MuslimCoin.</p>
-    <button onclick="startMining()">ابدأ التعدين</button>
+    <h1>تعدين MuslimCoin</h1>
+    
+    <!-- بيانات التعدين -->
+    <div class="mining-info">
+      <p>عدد العملات المكتسبة: <span id="earnedCoins">0</span></p>
+      <p>المؤقت التنازلي: <span id="countdown"></span></p>
+    </div>
+    
+    <!-- زر التعدين -->
+    <div class="mining-buttons">
+      <button class="btn" onclick="startMining()">ابدأ التعدين</button>
+    </div>
   </div>
 
   <script>
-    function startMining() {
-      alert("تم بدء عملية التعدين! سيتم استخراج 3 عملات بعد 24 ساعة.");
+    let earnedCoins = 0; // عدد العملات المكتسبة
+    let countdown = 24 * 60 * 60; // 24 ساعة (بالثواني)
+
+    // تحديث المؤقت التنازلي
+    function updateCountdown() {
+      const hours = Math.floor(countdown / 3600);
+      const minutes = Math.floor((countdown % 3600) / 60);
+      const seconds = countdown % 60;
+      document.getElementById('countdown').innerHTML = `${hours}:${minutes}:${seconds}`;
+      if (countdown > 0) {
+        countdown--;
+        setTimeout(updateCountdown, 1000);
+      }
     }
+
+    // بدء التعدين
+    function startMining() {
+      earnedCoins += 3; // إضافة 3 عملات لكل دورة تعدين
+      document.getElementById('earnedCoins').innerText = earnedCoins;
+    }
+
+    // بدء التوقيت
+    updateCountdown();
   </script>
+
 </body>
 </html>
