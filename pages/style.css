@@ -45,23 +45,6 @@ h1 {
   padding-bottom: 10px;
 }
 
-/* تنسيق الروابط */
-.page-links a {
-  display: inline-block;
-  background-color: #FFD700;
-  color: #fff;
-  padding: 12px 24px;
-  margin: 10px;
-  font-size: 1.2em;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.page-links a:hover {
-  background-color: #e6b800;
-}
-
 /* تنسيق الأزرار */
 button {
   font-family: 'Amiri', serif;
@@ -105,7 +88,7 @@ button:hover {
     font-size: 1.8em;
   }
 
-  button, .page-links a {
+  button {
     width: 100%;
     padding: 12px;
   }
