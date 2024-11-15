@@ -1,7 +1,6 @@
 /* إعدادات عامة */
 body {
   font-family: 'Amiri', serif; /* تطبيق الخط Amiri على كافة النصوص */
-  color: #FFD700;
   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9BkN6Ce_uaJzHzMe-YYPOvf9SkIKMUmbTGagUZDqHLDyuEh5Z7EXv3FPE&s=10');
   background-size: cover;
   background-position: center center;
@@ -26,17 +25,18 @@ body::before {
   z-index: -1; /* وضع الطبقة تحت المحتوى */
 }
 
-/* تنسيق المحتوى داخل الصفحة */
+/* تنسيق الحاوية الرئيسية */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.8);
   border-radius: 15px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* عنوان الصفحة */
 h1 {
   color: #FFD700;
   font-size: 2.5em;
@@ -63,21 +63,7 @@ button:hover {
   background-color: #e6b800; /* لون الذهب الداكن */
 }
 
-/* تنسيق أزرار اللغة */
-.language-selector {
-  margin-top: 20px;
-}
-
-.language-selector button {
-  background-color: #333;
-  margin: 5px;
-}
-
-.language-selector button:hover {
-  background-color: #555;
-}
-
-/* إضافة تنسيق للحقول والنماذج */
+/* تنسيق الحقول والنماذج */
 input[type="text"], input[type="password"], input[type="email"], input[type="number"] {
   width: 80%;
   padding: 10px;
@@ -89,6 +75,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
   font-family: 'Amiri', serif;
 }
 
+/* حقل ارسال البيانات */
 input[type="submit"] {
   background-color: #FFD700;
   color: #fff;
@@ -104,7 +91,7 @@ input[type="submit"]:hover {
   background-color: #e6b800;
 }
 
-/* تنسيق البيانات الشخصية */
+/* تنسيق بيانات المستخدم */
 .profile-data {
   margin-top: 20px;
   display: flex;
@@ -183,5 +170,9 @@ input[type="submit"]:hover {
 
   .mining-info {
     font-size: 1em;
+  }
+
+  .countdown {
+    font-size: 1.5em;
   }
 }
