@@ -9,13 +9,16 @@
 </head>
 <body>
 
-  <!-- العنوان الرئيسي -->
+  <!-- حاوية المحتوى الرئيسي -->
   <div class="container">
-    <h1>مرحباً بكم في MuslimCoin</h1>
-    <p>نحن هنا لنقدم لك أفضل تجربة للعملات الرقمية الإسلامية.</p>
+    <h1>مرحباً بكم في <br> MuslimCoin</h1>
+    <p>نحن هنا لنقدم لك أفضل تجربة للعملات الرقمية.</p>
 
     <!-- روابط الصفحات -->
     <div class="page-links">
+      <a href="pages/blockchain.html">Blockchain</a>
+      <a href="pages/isValid.html">Is Valid</a>
+      <a href="pages/mine.html">Mine</a>
       <a href="pages/user.html">الصفحة الرئيسية</a>
       <a href="pages/kyc.html">التحقق من الهوية</a>
       <a href="pages/transaction.html">التحويلات</a>
@@ -23,10 +26,18 @@
 
     <!-- أزرار اللغة -->
     <div class="language-selector">
-      <button>عربي</button>
-      <button>English</button>
+      <button onclick="changeLanguage('ar')">عربي</button>
+      <button onclick="changeLanguage('en')">English</button>
     </div>
   </div>
+
+  <!-- سكربت لتغيير اللغة -->
+  <script>
+    function changeLanguage(lang) {
+      // هنا يمكن وضع كود تغيير اللغة
+      alert("تم تغيير اللغة إلى " + (lang === 'ar' ? "العربية" : "الإنجليزية"));
+    }
+  </script>
 
 </body>
 </html>
