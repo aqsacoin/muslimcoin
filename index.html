@@ -13,7 +13,7 @@
     <p>مرحبًا بك في MuslimCoin، العملة الرقمية المستقلة.</p>
 
     <!-- بيانات المستخدم -->
-    <div class="profile-data">
+    <div class="profile-data" style="display:none;">
       <img src="https://via.placeholder.com/100" alt="User Profile" class="profile-pic">
       <div class="user-details">
         <p class="username">اسم المستخدم</p>
@@ -25,7 +25,7 @@
     <div class="navigation">
       <a href="/muslimcoin/pages/blockchain.html" class="btn">بلوك تشين</a>
       <a href="/muslimcoin/pages/isValid.html" class="btn">التحقق</a>
-      <a href="/muslimcoin/pages/mine.html" class="btn">تعدين</a>
+      <a href="/muslimcoin/pages/mine.html" class="btn" id="mine-btn">تعدين</a>
       <a href="/muslimcoin/pages/wallet.html" class="btn">المحفظة</a>
       <a href="/muslimcoin/pages/kyc.html" class="btn">التحقق من الهوية</a>
     </div>
@@ -43,6 +43,94 @@
   </div>
 
   <script src="/muslimcoin/pages/script.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // تحقق من حالة تسجيل الدخول
+      const isLoggedIn = localStorage.getItem('loggedIn');
+
+      // العناصر في الصفحة
+      const profileData = document.querySelector('.profile-data');
+      const logoutBtn = document.querySelector('.logout-btn');
+      const usernameElement = document.querySelector('.username');
+      const balanceElement = document.querySelector('.balance span');
+      const profilePic = document.querySelector('.profile-pic');
+      const mineBtn = document.getElementById('mine-btn');
+      const timerElement = document.getElementById('timer');
+      
+      // إذا كان المستخدم مسجلاً، اعرض بياناته
+      if (isLoggedIn) {
+        // عرض بيانات المستخدم
+        profileData.style.display = 'block'; 
+
+        // هنا يمكن إضافة بيانات المستخدم الفعلية
+        const username = localStorage.getItem('username') || 'اسم المستخدم';
+        const balance = localStorage.getItem('balance') || '0.00';
+        const profilePicture = localStorage.getItem('profilePic') || 'https://via.placeholder.com/100';
+
+        usernameElement.textContent = username;
+        balanceElement.textContent = balance;
+        profilePic.src = profilePicture;
+
+        // التحقق من وقت التعدين الأخير
+        let lastMiningTime = localStorage.getItem('lastMiningTime');
+        const miningDuration = 24 * 60 * 60; // 24 ساعة بالثواني
+        let currentTime = Math.floor(Date.now() / 1000); // الوقت الحالي بالثواني
+        
+        if (lastMiningTime) {
+          let remainingTime = (lastMiningTime + miningDuration) - currentTime;
+          if (remainingTime > 0) {
+            // إيقاف زر التعدين إذا لم تمر 24 ساعة
+            mineBtn.disabled = true;
+            let hours = Math.floor(remainingTime / 3600);
+            let minutes = Math.floor((remainingTime % 3600) / 60);
+            let seconds = remainingTime % 60;
+            timerElement.textContent = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+          } else {
+            mineBtn.disabled = false;
+            timerElement.textContent = '00:00:00'; // عند انتهاء الدورة
+          }
+        } else {
+          mineBtn.disabled = false; // إذا لم يكن هناك وقت تعدين سابق
+        }
+
+      } else {
+        // إذا لم يكن المستخدم مسجلاً، إعادة التوجيه إلى صفحة تسجيل الدخول
+        window.location.href = '/muslimcoin/pages/login.html';
+      }
+
+      // وظيفة تسجيل الخروج
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(event) {
+          event.preventDefault();
+          
+          // مسح بيانات الجلسة من localStorage
+          localStorage.removeItem('loggedIn');
+          localStorage.removeItem('username');
+          localStorage.removeItem('balance');
+          localStorage.removeItem('profilePic');
+          localStorage.removeItem('lastMiningTime');
+          
+          // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول
+          window.location.href = '/muslimcoin/pages/login.html'; 
+        });
+      }
+
+      // إضافة وظيفة لزر التعدين
+      if (mineBtn) {
+        mineBtn.addEventListener('click', function() {
+          // تخزين وقت التعدين الحالي في localStorage
+          localStorage.setItem('lastMiningTime', Math.floor(Date.now() / 1000));
+          mineBtn.disabled = true; // تعطيل الزر
+        });
+      }
+
+      // إضافة صفر قبل الأرقام الصغيرة
+      function padZero(num) {
+        return num < 10 ? '0' + num : num;
+      }
+    });
+  </script>
 
 </body>
 </html>
