@@ -7,12 +7,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="overlay"></div> <!-- الطبقة الشفافة -->
+
   <div class="container">
     <h1>مرحباً بك في MuslimCoin</h1>
     <p>اكتشف عالم العملات الرقمية الخاص بالمسلمين</p>
     <button onclick="location.href='/mine'">ابدأ التعدين</button>
     <button onclick="location.href='/blockchain'">عرض البلوكتشين</button>
     <button onclick="location.href='/isValid'">التحقق من صحة السلسلة</button>
+    <!-- زر تغيير اللغة -->
+    <button onclick="toggleLanguage()">English / العربية</button>
   </div>
+
+  <script>
+    // كود تبديل اللغة
+    function toggleLanguage() {
+      alert("Toggle language function here!");
+    }
+  </script>
 </body>
 </html>
