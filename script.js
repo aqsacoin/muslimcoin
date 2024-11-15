@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
       localStorage.setItem('registeredPassword', password);
 
       alert('تم التسجيل بنجاح. يمكنك الآن تسجيل الدخول.');
-      window.location.href = 'login.html';
+      window.location.href = 'pages/login.html';
     });
   }
 
