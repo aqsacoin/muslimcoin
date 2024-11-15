@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>محفظة مسلم كوين</title>
-  <link rel="stylesheet" href="../style.css">  <!-- ربط مع ملف style.css -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محفظتك</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>محفظة مسلم كوين</h1>
+    <!-- شريط التنقل -->
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Azkar Coin</a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">الرئيسية</a></li>
+                    <li><a href="../pages/blockchain.html">البلوك تشين</a></li>
+                    <li><a href="../pages/mine.html">التعدين</a></li>
+                    <li><a href="../pages/kyc.html">KYC</a></li>
+                    <li><a href="#">المحفظة</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <!-- عرض العنوان الفريد -->
-    <div class="wallet-info">
-      <p><strong>عنوان المحفظة:</strong> <span id="address">MSC12345abcdefg</span></p>
-      <p><strong>رصيد المحفظة:</strong> <span id="balance">0</span> عملة</p>
-    </div>
+    <!-- محفظة المستخدم -->
+    <section class="wallet">
+        <div class="container">
+            <h1>محفظتك</h1>
+            <div class="wallet-info">
+                <p>الرصيد: <span id="balance">0</span> MSC</p>
+                <button id="generateWallet">توليد عنوان محفظة جديد</button>
+            </div>
 
-    <!-- عرض كلمات الاسترداد -->
-    <div class="recovery-phrase">
-      <h2>كلمات الاسترداد</h2>
-      <p id="recovery-phrase">loading...</p>
-    </div>
+            <div class="wallet-address">
+                <p><strong>عنوان المحفظة:</strong> <span id="walletAddress">MSC-12345-ABCDE</span></p>
+            </div>
 
-    <!-- تحويل الأموال -->
-    <div class="transfer-section">
-      <h2>تحويل الأموال</h2>
-      <form id="transfer-form">
-        <label for="receiver-address">عنوان المستقبل:</label>
-        <input type="text" id="receiver-address" required>
+            <div class="transaction">
+                <h2>إرسال و استلام</h2>
+                <form id="transferForm">
+                    <label for="recipient">إلى:</label>
+                    <input type="text" id="recipient" name="recipient" placeholder="أدخل عنوان المستلم" required>
+                    
+                    <label for="amount">المبلغ:</label>
+                    <input type="number" id="amount" name="amount" placeholder="أدخل المبلغ" required>
+                    
+                    <button type="submit">إرسال</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-        <label for="amount">المبلغ:</label>
-        <input type="number" id="amount" required>
-
-        <button type="submit">إرسال</button>
-      </form>
-      <p id="transfer-status"></p>
-    </div>
-
-    <!-- مكافأة المهام اليومية -->
-    <div class="daily-reward">
-      <button id="daily-reward-btn">استلام مكافأة يومية</button>
-      <p id="reward-status"></p>
-    </div>
-  </div>
-
-  <script src="wallet.js"></script> <!-- ربط مع ملف الجافا سكربت -->
+    <script src="../pages/wallet.js"></script>
 </body>
 </html>
