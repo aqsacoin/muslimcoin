@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const profilePic = document.querySelector('.profile-pic');
   const timerElement = document.getElementById('timer');
   const mineButton = document.getElementById('mine-btn'); // زر التعدين
-  let isMining = false; // للتأكد من أن التعدين لا يحدث تلقائيًا
+  let isMining = localStorage.getItem('isMining') === 'true'; // حالة التعدين السابقة
   
   // إذا لم يكن المستخدم مسجلاً، إعادة التوجيه إلى صفحة تسجيل الدخول
   if (!isLoggedIn) {
@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function() {
       localStorage.removeItem('username');
       localStorage.removeItem('balance');
       localStorage.removeItem('profilePic');
+      localStorage.removeItem('isMining');
+      localStorage.removeItem('miningTime');
       
       // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول
       window.location.href = 'pages/login.html'; 
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // إعداد مؤقت تنازلي في صفحة التعدين عند الضغط على زر التعدين فقط
   if (timerElement && mineButton) {
     let seconds = parseInt(localStorage.getItem('miningTime') || '3600'); // يبدأ من آخر قيمة أو ساعة
-
+    
     const updateTimer = () => {
       let hours = Math.floor(seconds / 3600);
       let minutes = Math.floor((seconds % 3600) / 60);
@@ -72,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // إعادة تعيين الوقت وجعل التعدين غير مفعل
         seconds = 3600;
         isMining = false;
+        localStorage.setItem('isMining', 'false');
         localStorage.setItem('miningTime', seconds);
       }
     };
@@ -85,7 +88,9 @@ document.addEventListener("DOMContentLoaded", function() {
     mineButton.addEventListener('click', function() {
       if (!isMining) {
         isMining = true; // تفعيل التعدين
+        localStorage.setItem('isMining', 'true');
         seconds = 3600; // تعيين المؤقت لساعة
+        localStorage.setItem('miningTime', seconds);
       } else {
         alert('التعدين جاري بالفعل');
       }
