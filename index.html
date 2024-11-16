@@ -48,6 +48,7 @@
     document.addEventListener("DOMContentLoaded", function() {
       // تحقق من حالة تسجيل الدخول
       const isLoggedIn = localStorage.getItem('loggedIn');
+      const isKYCVerified = localStorage.getItem('kycVerified'); // التحقق من KYC
 
       // العناصر في الصفحة
       const profileData = document.querySelector('.profile-data');
@@ -57,13 +58,14 @@
       const profilePic = document.querySelector('.profile-pic');
       const mineBtn = document.getElementById('mine-btn');
       const timerElement = document.getElementById('timer');
-      
+      const walletBtn = document.getElementById('wallet-btn'); // زر المحفظة
+
       // إذا كان المستخدم مسجلاً، اعرض بياناته
       if (isLoggedIn) {
         // عرض بيانات المستخدم
         profileData.style.display = 'block'; 
 
-        // هنا يمكن إضافة بيانات المستخدم الفعلية
+        // إضافة بيانات المستخدم الفعلية
         const username = localStorage.getItem('username') || 'اسم المستخدم';
         const balance = localStorage.getItem('balance') || '0.00';
         const profilePicture = localStorage.getItem('profilePic') || 'https://via.placeholder.com/100';
@@ -82,13 +84,23 @@
           if (remainingTime > 0) {
             // إيقاف زر التعدين إذا لم تمر 24 ساعة
             mineBtn.disabled = true;
-            startCountdown(remainingTime); // بدء العد التنازلي
+            let hours = Math.floor(remainingTime / 3600);
+            let minutes = Math.floor((remainingTime % 3600) / 60);
+            let seconds = remainingTime % 60;
+            timerElement.textContent = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
           } else {
             mineBtn.disabled = false;
             timerElement.textContent = '00:00:00'; // عند انتهاء الدورة
           }
         } else {
           mineBtn.disabled = false; // إذا لم يكن هناك وقت تعدين سابق
+        }
+
+        // التحقق من KYC
+        if (!isKYCVerified) {
+          // منع التعدين إذا لم يمر المستخدم من التحقق
+          mineBtn.disabled = true;
+          alert('يرجى إتمام التحقق من الهوية أولاً');
         }
 
       } else {
@@ -107,6 +119,7 @@
           localStorage.removeItem('balance');
           localStorage.removeItem('profilePic');
           localStorage.removeItem('lastMiningTime');
+          localStorage.removeItem('kycVerified'); // إزالة التحقق من الهوية
           
           // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول
           window.location.href = '/muslimcoin/pages/login.html'; 
@@ -119,31 +132,22 @@
           // تخزين وقت التعدين الحالي في localStorage
           localStorage.setItem('lastMiningTime', Math.floor(Date.now() / 1000));
           mineBtn.disabled = true; // تعطيل الزر
-          startCountdown(24 * 60 * 60); // بدء العد التنازلي لمدة 24 ساعة
+          
+          // تحديث الرصيد بعد التعدين
+          let currentBalance = parseFloat(localStorage.getItem('balance') || '0.00');
+          let newBalance = (currentBalance + 3).toFixed(2); // إضافة 3 عملات للمستخدم
+          localStorage.setItem('balance', newBalance);
+          balanceElement.textContent = `${newBalance} MuslimCoins`;
+
+          // قم بتحديث عقد التعدين هنا إذا كان موجودًا
         });
-      }
-
-      // وظيفة لبدء العد التنازلي
-      function startCountdown(timeLeft) {
-        const interval = setInterval(function() {
-          let hours = Math.floor(timeLeft / 3600);
-          let minutes = Math.floor((timeLeft % 3600) / 60);
-          let seconds = timeLeft % 60;
-          timerElement.textContent = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
-          timeLeft--;
-
-          if (timeLeft <= 0) {
-            clearInterval(interval);
-            mineBtn.disabled = false; // تمكين زر التعدين بعد انتهاء الـ 24 ساعة
-            timerElement.textContent = '00:00:00'; // عند انتهاء الدورة
-          }
-        }, 1000);
       }
 
       // إضافة صفر قبل الأرقام الصغيرة
       function padZero(num) {
         return num < 10 ? '0' + num : num;
       }
+
     });
   </script>
 
