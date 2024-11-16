@@ -82,10 +82,7 @@
           if (remainingTime > 0) {
             // إيقاف زر التعدين إذا لم تمر 24 ساعة
             mineBtn.disabled = true;
-            let hours = Math.floor(remainingTime / 3600);
-            let minutes = Math.floor((remainingTime % 3600) / 60);
-            let seconds = remainingTime % 60;
-            timerElement.textContent = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+            startCountdown(remainingTime); // بدء العد التنازلي
           } else {
             mineBtn.disabled = false;
             timerElement.textContent = '00:00:00'; // عند انتهاء الدورة
@@ -122,7 +119,25 @@
           // تخزين وقت التعدين الحالي في localStorage
           localStorage.setItem('lastMiningTime', Math.floor(Date.now() / 1000));
           mineBtn.disabled = true; // تعطيل الزر
+          startCountdown(24 * 60 * 60); // بدء العد التنازلي لمدة 24 ساعة
         });
+      }
+
+      // وظيفة لبدء العد التنازلي
+      function startCountdown(timeLeft) {
+        const interval = setInterval(function() {
+          let hours = Math.floor(timeLeft / 3600);
+          let minutes = Math.floor((timeLeft % 3600) / 60);
+          let seconds = timeLeft % 60;
+          timerElement.textContent = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+          timeLeft--;
+
+          if (timeLeft <= 0) {
+            clearInterval(interval);
+            mineBtn.disabled = false; // تمكين زر التعدين بعد انتهاء الـ 24 ساعة
+            timerElement.textContent = '00:00:00'; // عند انتهاء الدورة
+          }
+        }, 1000);
       }
 
       // إضافة صفر قبل الأرقام الصغيرة
