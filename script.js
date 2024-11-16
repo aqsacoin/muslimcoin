@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.username').textContent = username;
     balanceElement.textContent = balance;
 
-    let lastMiningTime = localStorage.getItem('lastMiningTime');
+    let lastMiningTime = parseInt(localStorage.getItem('lastMiningTime'), 10);
     const miningDuration = 24 * 60 * 60;
     let currentTime = Math.floor(Date.now() / 1000);
 
@@ -20,10 +20,16 @@ document.addEventListener("DOMContentLoaded", function() {
       let remainingTime = (lastMiningTime + miningDuration) - currentTime;
       if (remainingTime > 0) {
         mineBtn.disabled = true;
-        let hours = Math.floor(remainingTime / 3600);
-        let minutes = Math.floor((remainingTime % 3600) / 60);
-        let seconds = remainingTime % 60;
-        timerElement.textContent = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+        updateTimer(remainingTime);
+        const timerInterval = setInterval(() => {
+          remainingTime--;
+          updateTimer(remainingTime);
+          if (remainingTime <= 0) {
+            clearInterval(timerInterval);
+            mineBtn.disabled = false;
+            timerElement.textContent = '00:00:00';
+          }
+        }, 1000);
       } else {
         mineBtn.disabled = false;
         timerElement.textContent = '00:00:00';
@@ -70,6 +76,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function padZero(num) {
     return num < 10 ? '0' + num : num;
+  }
+
+  function updateTimer(remainingTime) {
+    let hours = Math.floor(remainingTime / 3600);
+    let minutes = Math.floor((remainingTime % 3600) / 60);
+    let seconds = remainingTime % 60;
+    timerElement.textContent = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
   }
 });
 
