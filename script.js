@@ -87,3 +87,41 @@ document.addEventListener("DOMContentLoaded", function() {
     return num < 10 ? '0' + num : num;
   }
 });
+
+// تسجيل الدخول
+document.getElementById("login-form")?.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const username = document.getElementById("login-username").value;
+  const password = document.getElementById("login-password").value;
+
+  // استرجاع بيانات المستخدم من localStorage والتحقق منها
+  const storedUsername = localStorage.getItem('username');
+  const storedPassword = localStorage.getItem('password');  // افترض أنه تم تخزين كلمة المرور أيضًا في localStorage
+
+  if (username === storedUsername && password === storedPassword) {
+    // إذا كانت البيانات صحيحة، تسجيل الدخول
+    localStorage.setItem('loggedIn', true);
+    window.location.href = "/muslimcoin/pages/dashboard.html";  // إعادة توجيه إلى الصفحة الرئيسية
+  } else {
+    alert("اسم المستخدم أو كلمة المرور غير صحيحة.");
+  }
+});
+
+// التسجيل
+document.getElementById("register-form")?.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const username = document.getElementById("username").value;
+  const email = document.getElementById("email").value; // يمكن استخدام البريد الإلكتروني في التخزين ولكن ليس في عملية التحقق
+  const password = document.getElementById("password").value;
+
+  // تخزين البيانات في localStorage
+  localStorage.setItem('username', username);
+  localStorage.setItem('email', email); // يمكن استخدام البريد الإلكتروني ولكن لم يعد له دور في هذه التعديلات
+  localStorage.setItem('password', password); // افترض أنه يتم تخزين كلمة المرور أيضًا
+  localStorage.setItem('loggedIn', true);
+
+  // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول بعد التسجيل
+  window.location.href = "/muslimcoin/pages/login.html";
+});
