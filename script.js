@@ -4,13 +4,14 @@ document.addEventListener("DOMContentLoaded", function() {
   const mineBtn = document.getElementById('mine-btn');
   const balanceElement = document.querySelector('.balance span');
   const timerElement = document.getElementById('timer');
+  const sendBtn = document.getElementById('send-btn'); // زر إرسال العملات
   const logoutBtn = document.querySelector('.logout-btn');
 
   if (isLoggedIn) {
     const username = localStorage.getItem('username') || 'اسم المستخدم';
-    const balance = localStorage.getItem('balance') || '0.00';
+    let balance = parseFloat(localStorage.getItem('balance')) || 0.00;
+    balanceElement.textContent = balance.toFixed(2);
     document.querySelector('.username').textContent = username;
-    balanceElement.textContent = balance;
 
     let lastMiningTime = parseInt(localStorage.getItem('lastMiningTime'), 10);
     const miningDuration = 24 * 60 * 60;
@@ -37,11 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       mineBtn.disabled = false;
     }
-
-    if (!isKYCVerified) {
-      mineBtn.disabled = true;
-      alert('يرجى إتمام التحقق من الهوية أولاً');
-    }
   } else {
     window.location.href = '/muslimcoin/pages/login.html';
   }
@@ -57,6 +53,28 @@ document.addEventListener("DOMContentLoaded", function() {
       balanceElement.textContent = `${newBalance} MuslimCoins`;
 
       // هنا يمكن إضافة وظيفة التفاعل مع العقد الذكي لتحديث البيانات في الشبكة
+    });
+  }
+
+  if (sendBtn) {
+    sendBtn.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      if (!isKYCVerified) {
+        alert('لا يمكنك إرسال العملات إلا بعد إتمام التحقق من الهوية (KYC).');
+        return;
+      }
+
+      // كود إرسال العملات بعد التحقق من الهوية
+      let sendAmount = parseFloat(prompt("أدخل المبلغ المراد إرساله:"));
+      if (sendAmount > 0 && sendAmount <= balance) {
+        balance -= sendAmount;
+        localStorage.setItem('balance', balance.toFixed(2));
+        balanceElement.textContent = `${balance.toFixed(2)} MuslimCoins`;
+        alert('تم إرسال العملات بنجاح.');
+      } else {
+        alert('رصيد غير كافٍ أو إدخال غير صالح.');
+      }
     });
   }
 
