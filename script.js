@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   } else {
     // إذا لم يكن المستخدم مسجلاً، إعادة التوجيه إلى صفحة التسجيل
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
   }
 
   // وظيفة تسجيل الخروج
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
       localStorage.removeItem('profilePic');
       
       // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول
-      window.location.href = 'login.html'; 
+      window.location.href = 'index.html'; 
     });
   }
 
@@ -105,15 +105,15 @@ document.addEventListener("DOMContentLoaded", function() {
   navigationLinks.forEach(link => {
     link.addEventListener('click', function(event) {
       // يمكن إضافة دوال للتحقق قبل التوجيه إذا لزم الأمر
-      if (!isLoggedIn && link.getAttribute('href') !== 'login.html') {
+      if (!isLoggedIn && link.getAttribute('href') !== 'index.html') {
         event.preventDefault();
         alert('يجب تسجيل الدخول أولاً');
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
       }
     });
   });
 
-  // إضافة وظيفة لتسجيل الدخول في صفحة تسجيل الدخول
+  // إضافة وظيفة لتسجيل الدخول في صفحة تسجيل الدخول (كود افتراضي لتسجيل الدخول)
   const loginForm = document.querySelector('#login-form');
   if (loginForm) {
     loginForm.addEventListener('submit', function(event) {
