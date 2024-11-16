@@ -96,13 +96,7 @@
           mineBtn.disabled = false; // إذا لم يكن هناك وقت تعدين سابق
         }
 
-        // التحقق من KYC
-        if (!isKYCVerified) {
-          // منع التعدين إذا لم يمر المستخدم من التحقق
-          mineBtn.disabled = true;
-          alert('يرجى إتمام التحقق من الهوية أولاً');
-        }
-
+        // إزالة التحقق من KYC لزر التعدين
       } else {
         // إذا لم يكن المستخدم مسجلاً، إعادة التوجيه إلى صفحة تسجيل الدخول
         window.location.href = '/muslimcoin/pages/login.html';
@@ -148,6 +142,16 @@
         return num < 10 ? '0' + num : num;
       }
 
+      // إضافة وظيفة لإرسال واستقبال العملات مع التحقق من KYC
+      if (walletBtn) {
+        walletBtn.addEventListener('click', function() {
+          if (!isKYCVerified) {
+            alert('يرجى إتمام التحقق من الهوية أولاً قبل إرسال أو استقبال العملات');
+            return;
+          }
+          // متابعة إرسال أو استقبال العملات هنا إذا تم التحقق من الهوية
+        });
+      }
     });
   </script>
 
