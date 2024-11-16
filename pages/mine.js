@@ -17,6 +17,11 @@ const updateTimer = () => {
   } else {
     timerElement.textContent = '00:00:00'; // بعد انتهاء الدورة
     mineBtn.disabled = false; // تفعيل الزر بعد 24 ساعة
+    
+    // زيادة الرصيد بعد 24 ساعة
+    let currentBalance = parseInt(localStorage.getItem('balance') || 0); // استرجاع الرصيد الحالي من localStorage
+    currentBalance += 3; // إضافة 3 عملات
+    localStorage.setItem('balance', currentBalance); // حفظ الرصيد الجديد
   }
 };
 
